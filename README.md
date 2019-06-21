@@ -1,5 +1,8 @@
 # apollo-mocked-provider
 
+> Note: this is a temporary fork of https://github.com/benawad/apollo-mocked-provider
+> for my own personal use. Please use/and/or contribute to the upstream.
+
 Automatically mock GraphQL data with a mocked ApolloProvider
 
 Inspiration: https://www.freecodecamp.org/news/a-new-approach-to-mocking-graphql-data-1ef49de3d491/

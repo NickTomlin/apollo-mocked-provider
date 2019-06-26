@@ -1,6 +1,6 @@
 {
   "name": "@nwt/apollo-mocked-provider",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Automatically mock GraphQL data with a mocked ApolloProvider. A temporary fork of apollo-mocked-provider.",
   "author": "Ben Awad",
   "license": "MIT",
@@ -29,7 +29,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
-    "prepublish": "npm test && npm run build"
+    "prepublishOnly": "npm test && npm run build"
   },
   "peerDependencies": {
     "react": ">=16"

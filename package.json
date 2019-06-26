@@ -28,7 +28,8 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test --env=jsdom"
+    "test": "tsdx test --env=jsdom",
+    "prepublish": "npm test && npm run build"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -68,7 +69,6 @@
     "apollo-link-schema": "^1.2.2",
     "graphql": "^14.3.1",
     "graphql-tools": "^4.0.4",
-    "isomorphic-unfetch": "^3.0.0",
     "react-apollo": "^2.5.6"
   }
 }

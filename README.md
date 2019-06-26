@@ -28,23 +28,6 @@ export const ApolloErrorProvider = createApolloErrorProvider();
 export const ApolloLoadingProvider = createApolloLoadingProvider();
 ```
 
-You can get the `typeDefs` with this helper file
-
-```js
-// downloadTypeDefs.js
-const { fetchTypeDefs } = require('apollo-mocked-provider');
-
-(() => {
-  fetchTypeDefs({ uri: 'http://localhost:4000/graphql' });
-})();
-```
-
-Then run that file
-
-```
-node downloadTypeDefs.js
-```
-
 ## testing
 
 ```jsx

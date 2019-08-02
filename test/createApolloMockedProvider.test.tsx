@@ -1,7 +1,12 @@
 import React from 'react';
 import { createApolloMockedProvider } from '../src';
 import { readFileSync } from 'fs';
-import { render, wait, waitForDomChange } from '@testing-library/react';
+import {
+  render,
+  wait,
+  waitForDomChange,
+  fireEvent,
+} from '@testing-library/react';
 import {
   GET_TODO_QUERY,
   GET_TODOS_QUERY,
@@ -98,6 +103,28 @@ test('allows throwing errors within resolvers to mock API errors', async () => {
   await waitForDomChange();
   expect(container.textContent).toMatch(/Success/);
   expect(container.textContent).toMatch(/GraphQL error: Boom/);
+});
+
+test('allows throwing errors within mutation resolvers to mock API errors', async () => {
+  const MockedProvider = createApolloMockedProvider(typeDefs);
+  const { container, getByText } = render(
+    <MockedProvider
+      customResolvers={{
+        Mutation: () => ({
+          addTodo: () => {
+            throw new Error('AddTodoError');
+          },
+        }),
+      }}
+    >
+      <Todo />
+    </MockedProvider>
+  );
+
+  await waitForDomChange();
+  fireEvent.click(getByText('Add todo'));
+  await wait();
+  expect(container.textContent).toMatch(/GraphQL error: AddTodoError/);
 });
 
 describe('caching', () => {
